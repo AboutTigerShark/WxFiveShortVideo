@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/userRigester/userRigester",
+    "pages/userLogin/userLogin"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "小伍短视频",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap10.json"
+}
