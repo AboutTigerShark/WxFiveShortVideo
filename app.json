@@ -1,8 +1,7 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/userRigester/userRigester",
-    "pages/userLogin/userLogin"
+    "pages/userLogin/userLogin",
+    "pages/userRegister/userRegister"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -10,5 +9,6 @@
     "navigationBarTitleText": "小伍短视频",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap10.json"
+  "sitemapLocation": "sitemap.json",
+  "debug": true
 }

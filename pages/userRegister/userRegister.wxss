@@ -1,3 +1,4 @@
+/* pages/userRegister/userRegister.wxss */
 page {
     background-color: whitesmoke;
 }
@@ -46,7 +47,7 @@ page {
     margin-top: 35px;
 }
 
-.goRegistBtn {
+.goLoginBtn {
     width: 80%;
     margin-top: 15px;
 }
