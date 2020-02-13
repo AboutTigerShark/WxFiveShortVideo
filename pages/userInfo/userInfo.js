@@ -15,7 +15,6 @@ Page({
     });
 
     var user = app.userinfo;
-    debugger;
     wx.request({
       url: serverUrl + '/logout?userId=' + user.id,
       method: "POST",
@@ -37,7 +36,6 @@ Page({
         } 
       }
     })
-    debugger;
   }
 
 })
