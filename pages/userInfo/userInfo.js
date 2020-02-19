@@ -36,6 +36,53 @@ Page({
         } 
       }
     })
+  },
+  changeFace: function(){
+    var me = this;
+    wx.chooseImage({
+      count:1,
+      sizeType: ['original', ['compressed']],
+      sourceType: ['album', 'camera'],
+      success: function(res) {
+        var tempFilePaths = res.tempFilePaths;
+        console.log(tempFilePaths);
+        wx.showLoading({
+          title: '请稍等...',
+        });
+
+        var serverUrl = app.serverUrl;
+        var userId = app.userinfo.id;
+        wx.uploadFile({
+          url: serverUrl + '/user/uploadFaceImage?userId=' + userId,
+          filePath: tempFilePaths[0],
+          name: 'file',
+          header: {'content-type': 'application/json'},
+          success: function(res){
+            var data = JSON.parse(res.data);
+            console.log(data);
+            wx.hideLoading();
+            if(data.status == 200){
+              wx.showToast({
+                title: '更换成功..',
+                icon: 'success',
+              });
+
+              var imageUrl = data.data;
+              me.setData({
+                faceUrl: serverUrl + imageUrl
+              });
+              
+            }else if(data.status == 500){
+              wx.showToast({
+                title: res.data.msg,
+              })
+            }
+           
+          }
+        })
+      },
+    })
+
   }
 
 })
