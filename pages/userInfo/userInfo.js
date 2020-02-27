@@ -8,6 +8,33 @@ Page({
     isMe: true,
     isFollow: false,
   },
+  onLoad: function(){
+    var me = this;
+    var serverUrl = app.serverUrl;
+    var user = app.userinfo;
+     wx.request({
+       url: serverUrl + '/query?userId=' + user.id,
+       method: "POST",
+       header: { 'content-type': 'application/json' },
+       success: function (res) {
+         console.log(res.data);
+         var status = res.data.status;
+         
+        if(status == 200){
+          var user = res.data.data;
+          var faceUrl = "../resource/images/noneface.png";
+          if (user.face_image != "" && user.face_image != undefined &&                            user.face_image != null){
+            me.setData({
+              faceUrl: faceUrl,
+
+            })
+                
+
+          }
+        }
+       }
+     }) 
+  },
   logout: function(){
     var serverUrl = app.serverUrl;
     wx.showLoading({

@@ -3,6 +3,7 @@
     "pages/userLogin/userLogin",
     "pages/userInfo/userInfo",
     "pages/userRegister/userRegister"
+
   ],
   "window": {
     "backgroundTextStyle": "light",
