@@ -12,7 +12,7 @@ Page({
 
       console.log(params);
       me.setData({
-        videoParams = params
+        videoParams: params
       })
 
       wx.request({
@@ -43,22 +43,32 @@ Page({
     var duration = me.data.videoParams.duration;
     var height = me.data.videoParams.height;
     var width = me.data.videoParams.width;
-    var tempVideoPath = me.data.videoParams.tempFilePath;
-    var tempCoverPath = me.data.videoParams.thumbTempFilePath;
+    var tempVideoPath = me.data.videoParams.tempVideoPath;
+    var tempCoverPath = me.data.videoParams.tempCoverPath;
 
+    debugger;
     wx.showLoading({
       title: '上传中..',
     });
 
     var userId = app.userinfo.id;
     wx.uploadFile({
-      url: serverUrl + '/video/uploadVideo?userId=' + userId,
+      url: serverUrl + '/video/uploadVideo',
+      formData: {
+        userId: userId,
+        bgmId: bgmId,
+        desc: desc,
+        videoSeconds: duration,
+        videoWidth: width,
+        videoHeight: height,
+      },
       filePath: tempVideoPath,
       name: 'file',
       header: { 'content-type': 'application/json' },
       success: function (res) {
         var data = JSON.parse(res.data);
         console.log(data);
+  
         wx.hideLoading();
         if (data.status == 200) {
           wx.showToast({

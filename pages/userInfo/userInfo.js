@@ -141,7 +141,13 @@ Page({
             duration: 2500,
           })
         }else{
-          //TODO 打开选择BGM的页面
+          wx.navigateTo({
+            url: '../chooseBgm/chooseBgm?duration=' + duration
+            + "&height=" + height + "&width=" + width
+              + "&tempVideoPath=" + tempVideoPath
+              + "&tempCoverPath=" + tempCoverPath,
+          })
+         
         }
       }
     })
